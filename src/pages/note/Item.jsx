@@ -1,7 +1,11 @@
-const NoteItem = ({ data, event }) => {
+import { useContext } from 'react';
+import NoteContext from './Context';
+
+const NoteItem = ({ data }) => {
 	console.log('Render Item');
 
-	const { onDoNote, onFinishNote, onCancelNote, onDeleteNote } = event.current;
+	const { actions } = useContext(NoteContext);
+	const { onDoNote, onFinishNote, onCancelNote, onDeleteNote } = actions;
 	const { id, value, status, priority, createdAt } = data;
 	const handleDoNote = () => onDoNote(id);
 	const handleFinishNote = () => onFinishNote(id);

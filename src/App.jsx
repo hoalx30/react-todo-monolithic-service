@@ -1,9 +1,13 @@
 import './App.css';
 
-import { Note } from './pages/note';
+import { Note, NoteProvider } from './pages/note';
 
 function App() {
-	return <Note />;
+	return (
+		<NoteProvider>
+			<Note />
+		</NoteProvider>
+	);
 }
 
 export default App;

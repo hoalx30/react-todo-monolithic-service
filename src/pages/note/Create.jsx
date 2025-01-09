@@ -1,10 +1,12 @@
 import { nanoid } from 'nanoid';
-import { memo, useRef, useState } from 'react';
+import { memo, useContext, useRef, useState } from 'react';
+import NoteContext from './Context';
 
-const NoteCreate = ({ event }) => {
+const NoteCreate = () => {
 	console.log('Render Create');
 
-	const { onCreateNode } = event.current;
+	const { actions } = useContext(NoteContext);
+	const { onCreateNode } = actions;
 	const [value, setValue] = useState('');
 	const [priority, setPriority] = useState('Low');
 	const [status, setStatus] = useState('Todo');
