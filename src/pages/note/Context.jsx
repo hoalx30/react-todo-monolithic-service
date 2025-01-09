@@ -1,5 +1,8 @@
 import { createContext } from 'react';
 
-const NoteContext = createContext({ latestNote: [], actions: {} });
+// @ts-ignore
+const NoteDataContext = createContext();
+// @ts-ignore
+const NoteActionsContext = createContext();
 
-export default NoteContext;
+export { NoteActionsContext, NoteDataContext };

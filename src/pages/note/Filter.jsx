@@ -1,11 +1,10 @@
 import { memo, useContext, useState } from 'react';
-import NoteContext from './Context';
+import { NoteActionsContext } from './Context';
 
 const NoteFilter = () => {
 	console.log('Render Filter');
 
-	const { actions } = useContext(NoteContext);
-	const { onSearchNote } = actions;
+	const { onSearchNote } = useContext(NoteActionsContext);
 	const [priorities, setPriorities] = useState([
 		{ id: 1, value: 'Low' },
 		{ id: 2, value: 'Medium' },

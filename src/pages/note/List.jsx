@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import NoteContext from './Context';
+import { NoteDataContext } from './Context';
 import NoteItem from './Item';
 
 const NoteList = () => {
 	console.log('Render List');
 
-	const { latestNote } = useContext(NoteContext);
+	const latestNote = useContext(NoteDataContext);
 	return (
 		<div>
 			<br />
