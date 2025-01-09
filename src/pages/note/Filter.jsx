@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 
-const NodeFilter = ({ event }) => {
+const NoteFilter = ({ event }) => {
 	console.log('Render Filter');
 
 	const { onSearchNote } = event.current;
@@ -62,4 +62,4 @@ const NodeFilter = ({ event }) => {
 	);
 };
 
-export default memo(NodeFilter);
+export default memo(NoteFilter);

@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { memo, useRef, useState } from 'react';
 
-const NodeCreate = ({ event }) => {
+const NoteCreate = ({ event }) => {
 	console.log('Render Create');
 
 	const { onCreateNode } = event.current;
@@ -33,4 +33,4 @@ const NodeCreate = ({ event }) => {
 	);
 };
 
-export default memo(NodeCreate);
+export default memo(NoteCreate);
