@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { NavLink } from 'react-router-dom';
 import NoteCreate from './Create';
 import NoteFilter from './Filter';
 import NoteList from './List';
@@ -11,6 +12,9 @@ const Note = () => {
 			<NoteFilter />
 			<NoteList />
 			<NoteQuote />
+			<NavLink to="/about" end>
+				About
+			</NavLink>
 		</Fragment>
 	);
 };
