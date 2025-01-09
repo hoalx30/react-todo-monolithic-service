@@ -9,32 +9,32 @@ const constants = {
 };
 const reducer = (state, action) => {
 	switch (action.type) {
-		case 'todo:create:note': {
+		case constants.create: {
 			const latest = [...state, action.payload];
 			localStorage.setItem('latestNotes', JSON.stringify(latest));
 			return latest;
 		}
-		case 'todo:do:note': {
+		case constants.do: {
 			const latest = state.map((note) => (note.id === action.payload ? { ...note, status: 'Doing' } : note));
 			localStorage.setItem('latestNotes', JSON.stringify(latest));
 			return latest;
 		}
-		case 'todo:cancel:note': {
+		case constants.cancel: {
 			const latest = state.map((note) => (note.id === action.payload ? { ...note, status: 'Cancel' } : note));
 			localStorage.setItem('latestNotes', JSON.stringify(latest));
 			return latest;
 		}
-		case 'todo:finish:note': {
+		case constants.finish: {
 			const latest = state.map((note) => (note.id === action.payload ? { ...note, status: 'Done' } : note));
 			localStorage.setItem('latestNotes', JSON.stringify(latest));
 			return latest;
 		}
-		case 'todo:remove:note': {
+		case constants.remove: {
 			const latest = state.filter((note) => note.id !== action.payload);
 			localStorage.setItem('latestNotes', JSON.stringify(latest));
 			return latest;
 		}
-		case 'todo:search:note': {
+		case constants.search: {
 			const latest = state.filter((note) => {
 				const { textSearch, prioritiesSearch, statusSearch } = action.payload;
 				return note.value.toLowerCase().includes(textSearch.toLowerCase()) && prioritiesSearch.includes(note.priority) && statusSearch.includes(note.status);

@@ -1,18 +1,18 @@
 import { nanoid } from 'nanoid';
 import { memo, useContext, useRef, useState } from 'react';
-import { NoteActionsContext } from './Context';
+import { NoteContext, constants } from './store';
 
 const NoteCreate = () => {
 	console.log('Render Create');
 
-	const { onCreateNode } = useContext(NoteActionsContext);
+	const { dispatch } = useContext(NoteContext);
 	const [value, setValue] = useState('');
 	const [priority, setPriority] = useState('Low');
 	const [status, setStatus] = useState('Todo');
 	const valueRef = useRef();
 
 	const handleCreateNote = () => {
-		onCreateNode({ id: nanoid(), value, priority, status, createdAt: Date.now() });
+		dispatch({ type: constants.create, payload: { id: nanoid(), value, priority, status, createdAt: Date.now() } });
 		setValue('');
 		setPriority('Low');
 		setStatus('Todo');

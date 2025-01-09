@@ -1,10 +1,10 @@
 import { memo, useContext, useState } from 'react';
-import { NoteActionsContext } from './Context';
+import { constants, NoteContext } from './store';
 
 const NoteFilter = () => {
 	console.log('Render Filter');
 
-	const { onSearchNote } = useContext(NoteActionsContext);
+	const { dispatch } = useContext(NoteContext);
 	const [priorities, setPriorities] = useState([
 		{ id: 1, value: 'Low' },
 		{ id: 2, value: 'Medium' },
@@ -19,7 +19,7 @@ const NoteFilter = () => {
 	const [prioritiesSearch, setPrioritiesSearch] = useState(priorities.map((v) => v.value));
 	const [statusSearch, setStatusSearch] = useState(status.map((v) => v.value));
 
-	const handleSearch = () => onSearchNote(textSearch, prioritiesSearch, statusSearch);
+	const handleSearch = () => dispatch({ type: constants.search, payload: { textSearch, prioritiesSearch, statusSearch } });
 	const handleReset = () => {
 		setTextSearch('');
 		setPrioritiesSearch(priorities.map((v) => v.value));

@@ -1,2 +1,4 @@
+import { NoteContext, NoteProvider } from './store';
+
 export { default as Note } from './Note';
-export { default as NoteProvider } from './Provider';
+export { NoteContext, NoteProvider };

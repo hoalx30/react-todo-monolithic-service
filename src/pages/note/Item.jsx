@@ -1,15 +1,15 @@
 import { useContext } from 'react';
-import { NoteActionsContext } from './Context';
+import { constants, NoteContext } from './store';
 
 const NoteItem = ({ data }) => {
 	console.log('Render Item');
 
-	const { onDoNote, onFinishNote, onCancelNote, onDeleteNote } = useContext(NoteActionsContext);
+	const { dispatch } = useContext(NoteContext);
 	const { id, value, status, priority, createdAt } = data;
-	const handleDoNote = () => onDoNote(id);
-	const handleFinishNote = () => onFinishNote(id);
-	const handleCancelNote = () => onCancelNote(id);
-	const handleDeleteNote = () => onDeleteNote(id);
+	const handleDoNote = () => dispatch({ type: constants.do, payload: { id } });
+	const handleFinishNote = () => dispatch({ type: constants.finish, payload: { id } });
+	const handleCancelNote = () => dispatch({ type: constants.cancel, payload: { id } });
+	const handleDeleteNote = () => dispatch({ type: constants.remove, payload: { id } });
 	return (
 		<tr>
 			<td style={{ width: '20%' }}>{id}</td>
