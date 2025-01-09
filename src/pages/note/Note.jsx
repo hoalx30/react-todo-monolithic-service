@@ -2,6 +2,7 @@ import { Fragment, useRef, useState } from 'react';
 import NodeCreate from './Create';
 import NodeFilter from './Filter';
 import NoteList from './List';
+import NodeQuote from './Quote';
 
 const Note = () => {
 	const [latestNote, setLatestNote] = useState(localStorage.getItem('latestNotes') ? JSON.parse(localStorage.getItem('latestNotes')) : []);
@@ -51,6 +52,7 @@ const Note = () => {
 			<NodeCreate event={event} />
 			<NodeFilter event={event} />
 			<NoteList data={latestNote} event={event} />
+			<NodeQuote />
 		</Fragment>
 	);
 };

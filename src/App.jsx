@@ -1,8 +1,9 @@
-import './App.css'
-import Node from './pages/note/Note'
+import './App.css';
+
+import { Note } from './pages/note';
 
 function App() {
-  return <Node />
+	return <Note />;
 }
 
-export default App
+export default App;
