@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { NoteSlice } from './Create';
-export { default as NoteSlice } from './slice';
+import actions from './actions';
 
 const NoteItem = ({ data }) => {
 	console.log('Render Item');
@@ -11,10 +10,14 @@ const NoteItem = ({ data }) => {
 	const dispatch = useDispatch();
 
 	const { id, value, status, priority, createdAt } = data;
-	const handleDoNote = () => dispatch(NoteSlice.actions.do(id));
-	const handleFinishNote = () => dispatch(NoteSlice.actions.finish(id));
-	const handleCancelNote = () => dispatch(NoteSlice.actions.cancel(id));
-	const handleDeleteNote = () => dispatch(NoteSlice.actions.delete(id));
+	// @ts-ignore
+	const handleDoNote = () => dispatch(actions.done(id));
+	// @ts-ignore
+	const handleFinishNote = () => dispatch(actions.finish(id));
+	// @ts-ignore
+	const handleCancelNote = () => dispatch(actions.cancel(id));
+	// @ts-ignore
+	const handleDeleteNote = () => dispatch(actions.remove(id));
 	return (
 		<tr>
 			<td style={{ width: '20%' }}>{id}</td>

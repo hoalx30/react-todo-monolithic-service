@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { NoteSlice } from './Create';
+import NoteSlice from './slice';
 export { default as NoteSlice } from './slice';
 
 const NoteFilter = () => {

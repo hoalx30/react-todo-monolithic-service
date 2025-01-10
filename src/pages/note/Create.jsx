@@ -1,8 +1,7 @@
 import { nanoid } from 'nanoid';
 import { memo, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { NoteSlice } from '.';
-export { default as NoteSlice } from './slice';
+import actions from './actions';
 
 const NoteCreate = () => {
 	console.log('Render Create');
@@ -20,8 +19,11 @@ const NoteCreate = () => {
 		/**
 		const { actions } = NoteStore;
 		dispatch(actions.createNote({ id: nanoid(), value, priority, status, createdAt: Date.now() }));
-		*/
+		
 		dispatch(NoteSlice.actions.create({ id: nanoid(), value, priority, status, createdAt: Date.now() }));
+		*/
+		// @ts-ignore
+		dispatch(actions.save({ id: nanoid(), value, priority, status, createdAt: Date.now() }));
 		setValue('');
 		setPriority('Low');
 		setStatus('Todo');

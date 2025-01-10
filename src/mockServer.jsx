@@ -29,7 +29,8 @@ const startServer = () => {
 			// @ts-ignore
 			this.delete('/notes/:id', (schema, req) => {
 				let id = req.params.id;
-				return schema.find('notes', id).destroy();
+				schema.find('notes', id).destroy();
+				return id;
 			});
 		},
 	});

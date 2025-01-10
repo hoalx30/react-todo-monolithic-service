@@ -8,13 +8,12 @@ const NoteList = () => {
 	/**
 	const { latestNote } = useContext(NoteContext);
 	*/
-	const latestNote = useSelector(selector.latestNotes);
-
+	const { isLoading, latestNote } = useSelector(selector.latestNotes);
 	return (
 		<div>
 			<br />
 			<strong>List: </strong>
-			{latestNote?.length ? latestNote.map((note) => <NoteItem key={note.id} data={note} />) : <p>No data available</p>}
+			{isLoading ? <p>Loading...</p> : latestNote?.length === 0 ? <p>No data available</p> : latestNote.map((note) => <NoteItem key={note.id} data={note} />)}
 		</div>
 	);
 };
