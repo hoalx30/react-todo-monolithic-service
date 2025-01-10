@@ -1,7 +1,8 @@
 import { nanoid } from 'nanoid';
 import { memo, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { NoteSlice } from './store';
+import { NoteSlice } from '.';
+export { default as NoteSlice } from './slice';
 
 const NoteCreate = () => {
 	console.log('Render Create');

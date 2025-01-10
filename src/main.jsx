@@ -4,7 +4,10 @@ import './index.css';
 import { GlobalProvider } from './store/index.jsx';
 
 createRoot(document.getElementById('root')).render(
-	// <StrictMode></StrictMode>
+	/**
+	import { StrictMode } from 'react';
+	<StrictMode></StrictMode>
+	*/
 	<GlobalProvider>
 		<App />,
 	</GlobalProvider>,

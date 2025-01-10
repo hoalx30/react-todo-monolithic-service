@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { NoteSlice } from './store';
+import { NoteSlice } from './Create';
+export { default as NoteSlice } from './slice';
 
 const NoteItem = ({ data }) => {
 	console.log('Render Item');
@@ -7,7 +8,6 @@ const NoteItem = ({ data }) => {
 	/**
 	const { dispatch } = useContext(NoteContext);
 	*/
-
 	const dispatch = useDispatch();
 
 	const { id, value, status, priority, createdAt } = data;
