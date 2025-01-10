@@ -1,11 +1,15 @@
-import { useContext } from 'react';
+import { useSelector } from 'react-redux';
+import { selector } from '../../store/note';
 import NoteItem from './Item';
-import { NoteContext } from './store';
 
 const NoteList = () => {
 	console.log('Render List');
 
+	/**
 	const { latestNote } = useContext(NoteContext);
+	*/
+	const latestNote = useSelector(selector.latestNotes);
+
 	return (
 		<div>
 			<br />

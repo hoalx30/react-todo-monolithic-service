@@ -1,5 +1,6 @@
 import { NoteContext } from './Context';
-import { constants } from './reducer';
 
+export { default as constants } from './constant';
 export { default as NoteProvider } from './Provider';
-export { constants, NoteContext };
+export { default as NoteSlice } from './slice';
+export { NoteContext };

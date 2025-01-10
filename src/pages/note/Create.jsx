@@ -1,18 +1,24 @@
 import { nanoid } from 'nanoid';
-import { memo, useContext, useRef, useState } from 'react';
-import { NoteContext, constants } from './store';
+import { memo, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { NoteStore } from '../../store';
 
 const NoteCreate = () => {
 	console.log('Render Create');
-
+	/**
 	const { dispatch } = useContext(NoteContext);
+	*/
+
+	const { actions } = NoteStore;
+	const dispatch = useDispatch();
+
 	const [value, setValue] = useState('');
 	const [priority, setPriority] = useState('Low');
 	const [status, setStatus] = useState('Todo');
 	const valueRef = useRef();
 
 	const handleCreateNote = () => {
-		dispatch({ type: constants.create, payload: { id: nanoid(), value, priority, status, createdAt: Date.now() } });
+		dispatch(actions.createNote({ id: nanoid(), value, priority, status, createdAt: Date.now() }));
 		setValue('');
 		setPriority('Low');
 		setStatus('Todo');

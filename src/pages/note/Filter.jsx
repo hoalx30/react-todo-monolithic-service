@@ -1,10 +1,15 @@
-import { memo, useContext, useState } from 'react';
-import { constants, NoteContext } from './store';
+import { memo, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { constants } from './store';
 
 const NoteFilter = () => {
 	console.log('Render Filter');
 
+	/**
 	const { dispatch } = useContext(NoteContext);
+	*/
+	const dispatch = useDispatch();
+
 	const [priorities, setPriorities] = useState([
 		{ id: 1, value: 'Low' },
 		{ id: 2, value: 'Medium' },

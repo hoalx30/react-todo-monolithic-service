@@ -1,15 +1,20 @@
-import { useContext } from 'react';
-import { constants, NoteContext } from './store';
+import { useDispatch } from 'react-redux';
+import { constants } from './store';
 
 const NoteItem = ({ data }) => {
 	console.log('Render Item');
 
+	/**
 	const { dispatch } = useContext(NoteContext);
+	*/
+
+	const dispatch = useDispatch();
+
 	const { id, value, status, priority, createdAt } = data;
-	const handleDoNote = () => dispatch({ type: constants.do, payload: { id } });
-	const handleFinishNote = () => dispatch({ type: constants.finish, payload: { id } });
-	const handleCancelNote = () => dispatch({ type: constants.cancel, payload: { id } });
-	const handleDeleteNote = () => dispatch({ type: constants.remove, payload: { id } });
+	const handleDoNote = () => dispatch({ type: constants.do, payload: id });
+	const handleFinishNote = () => dispatch({ type: constants.finish, payload: id });
+	const handleCancelNote = () => dispatch({ type: constants.cancel, payload: id });
+	const handleDeleteNote = () => dispatch({ type: constants.remove, payload: id });
 	return (
 		<tr>
 			<td style={{ width: '20%' }}>{id}</td>

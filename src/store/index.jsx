@@ -1,3 +1,5 @@
 import { GlobalContext, GlobalProvider } from './global';
+import { actions, noteStore } from './note';
 
-export { GlobalContext, GlobalProvider };
+const NoteStore = { noteStore, actions };
+export { GlobalContext, GlobalProvider, NoteStore };

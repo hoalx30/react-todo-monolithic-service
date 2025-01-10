@@ -1,7 +1,8 @@
 import constants from './constant';
 
-const initializer = () => (localStorage.getItem('latestNotes') ? JSON.parse(localStorage.getItem('latestNotes')) : []);
-const reducer = (state, action) => {
+const initialState = localStorage.getItem('latestNotes') ? JSON.parse(localStorage.getItem('latestNotes')) : [];
+
+const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case constants.create: {
 			const latest = [...state, action.payload];
@@ -40,4 +41,4 @@ const reducer = (state, action) => {
 	}
 };
 
-export { constants, initializer, reducer };
+export default { initialState, reducer };
