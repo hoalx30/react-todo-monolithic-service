@@ -1,15 +1,13 @@
 import { nanoid } from 'nanoid';
 import { memo, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { NoteStore } from '../../store';
+import { NoteSlice } from './store';
 
 const NoteCreate = () => {
 	console.log('Render Create');
 	/**
 	const { dispatch } = useContext(NoteContext);
 	*/
-
-	const { actions } = NoteStore;
 	const dispatch = useDispatch();
 
 	const [value, setValue] = useState('');
@@ -18,7 +16,11 @@ const NoteCreate = () => {
 	const valueRef = useRef();
 
 	const handleCreateNote = () => {
+		/**
+		const { actions } = NoteStore;
 		dispatch(actions.createNote({ id: nanoid(), value, priority, status, createdAt: Date.now() }));
+		*/
+		dispatch(NoteSlice.actions.create({ id: nanoid(), value, priority, status, createdAt: Date.now() }));
 		setValue('');
 		setPriority('Low');
 		setStatus('Todo');

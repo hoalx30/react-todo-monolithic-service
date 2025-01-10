@@ -1,3 +1,4 @@
+// Do not need when use Redux Toolkit
 import { constants } from '../../pages/note';
 
 const createNote = (payload) => ({ type: constants.create, payload });

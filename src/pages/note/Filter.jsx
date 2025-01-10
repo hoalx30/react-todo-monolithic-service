@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { constants } from './store';
+import { NoteSlice } from './store';
 
 const NoteFilter = () => {
 	console.log('Render Filter');
@@ -24,7 +24,7 @@ const NoteFilter = () => {
 	const [prioritiesSearch, setPrioritiesSearch] = useState(priorities.map((v) => v.value));
 	const [statusSearch, setStatusSearch] = useState(status.map((v) => v.value));
 
-	const handleSearch = () => dispatch({ type: constants.search, payload: { textSearch, prioritiesSearch, statusSearch } });
+	const handleSearch = () => dispatch(NoteSlice.actions.search({ textSearch, prioritiesSearch, statusSearch }));
 	const handleReset = () => {
 		setTextSearch('');
 		setPrioritiesSearch(priorities.map((v) => v.value));
