@@ -1,15 +1,12 @@
-import { useDispatch } from 'react-redux';
-import actions from './actions';
+import { useCancelMutation, useDoneMutation, useRemoveMutation } from './apis';
 
 const NoteItem = ({ data }) => {
 	console.log('Render Item');
 
 	/**
 	const { dispatch } = useContext(NoteContext);
-	*/
-	const dispatch = useDispatch();
 
-	const { id, value, status, priority, createdAt } = data;
+	const dispatch = useDispatch();
 	// @ts-ignore
 	const handleDoNote = () => dispatch(actions.done(id));
 	// @ts-ignore
@@ -18,6 +15,24 @@ const NoteItem = ({ data }) => {
 	const handleCancelNote = () => dispatch(actions.cancel(id));
 	// @ts-ignore
 	const handleDeleteNote = () => dispatch(actions.remove(id));
+	*/
+
+	const [doneNote, { isLoading: isDo }] = useDoneMutation();
+	const [finishNote, { isLoading: isFinish }] = useDoneMutation();
+	const [cancelNote, { isLoading: isLoad }] = useCancelMutation();
+	const [removeNote, { isLoading: isRemove }] = useRemoveMutation();
+
+	const isLoading = isDo || isFinish || isLoad || isRemove;
+
+	const { id, value, status, priority, createdAt } = data;
+	// @ts-ignore
+	const handleDoNote = async () => doneNote(id);
+	// @ts-ignore
+	const handleFinishNote = async () => finishNote(id);
+	// @ts-ignore
+	const handleCancelNote = async () => cancelNote(id);
+	// @ts-ignore
+	const handleDeleteNote = async () => removeNote(id);
 	return (
 		<tr>
 			<td style={{ width: '20%' }}>{id}</td>
@@ -31,6 +46,7 @@ const NoteItem = ({ data }) => {
 				<input type="button" value="Cancel" onClick={handleCancelNote} />
 				<input type="button" value="Remove" onClick={handleDeleteNote} />
 			</td>
+			{isLoading && <td>Loading...</td>}
 		</tr>
 	);
 };

@@ -1,14 +1,16 @@
-import { useSelector } from 'react-redux';
-import { selector } from '../../store/note';
 import NoteItem from './Item';
+import { useFindAllQuery } from './apis';
 
 const NoteList = () => {
 	console.log('Render List');
 
 	/**
 	const { latestNote } = useContext(NoteContext);
-	*/
+
 	const { isLoading, latestNote } = useSelector(selector.latestNotes);
+	*/
+	const { isLoading, data } = useFindAllQuery();
+	const latestNote = data?.notes;
 	return (
 		<div>
 			<br />
